@@ -41,9 +41,12 @@ module.exports.postAProduct = async (req, res, next) => {
     }
 };
 
-module.exports.updateAProduct = (req, res, next) => {
+module.exports.updateAProduct = async (req, res, next) => {
     try {
-        const data = "update route working?";
+        const { id } = req.params;
+        // const query = { _id: id };
+
+        const data = await ProductModel.findById(id)
 
 
         res.status(200).json({
@@ -61,15 +64,18 @@ module.exports.updateAProduct = (req, res, next) => {
     }
 };
 
-module.exports.deleteAProduct = (req, res, next) => {
+module.exports.deleteAProduct = async (req, res, next) => {
     try {
-        const data = "delete route working?";
+        const { id } = req.params;
+        const query = { _id: id };
+
+        const result = await ProductModel.deleteOne(query)
 
 
         res.status(200).json({
             success: true,
             message: "data get successfully",
-            data: data
+            data: result
         })
 
     } catch (error) {

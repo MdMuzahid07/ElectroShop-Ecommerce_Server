@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 async function databaseConnection() {
-    await mongoose.connect('mongodb://localhost:27017/test').then(
-        console.log(`Database connected using mongoose`)
+    await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ueifkoz.mongodb.net/?retryWrites=true&w=majority`).then(
+        console.log(`MongoDB connected using mongoose`)
     );
 };
 

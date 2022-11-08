@@ -3,14 +3,14 @@ module.exports.getAllProducts = (req, res, next) => {
         const data = "get route working?";
 
 
-        res.status(200).send({
+        res.status(200).json({
             success: true,
             message: "data get successfully",
             data: data
         })
 
     } catch (error) {
-        res.status(500).send({
+        res.status(500).json({
             success: false,
             message: "data not find",
             error: error.message
@@ -23,14 +23,14 @@ module.exports.uploadAProduct = (req, res, next) => {
         const data = "post route working?";
 
 
-        res.status(200).send({
+        res.status(200).json({
             success: true,
             message: "data get successfully",
             data: data
         })
 
     } catch (error) {
-        res.status(500).send({
+        res.status(500).json({
             success: false,
             message: "data not find",
             error: error.message
@@ -43,14 +43,14 @@ module.exports.updateAProduct = (req, res, next) => {
         const data = "update route working?";
 
 
-        res.status(200).send({
+        res.status(200).json({
             success: true,
             message: "data get successfully",
             data: data
         })
 
     } catch (error) {
-        res.status(500).send({
+        res.status(500).json({
             success: false,
             message: "data not find",
             error: error.message
@@ -63,14 +63,14 @@ module.exports.deleteAProduct = (req, res, next) => {
         const data = "delete route working?";
 
 
-        res.status(200).send({
+        res.status(200).json({
             success: true,
             message: "data get successfully",
             data: data
         })
 
     } catch (error) {
-        res.status(500).send({
+        res.status(500).json({
             success: false,
             message: "data not find",
             error: error.message

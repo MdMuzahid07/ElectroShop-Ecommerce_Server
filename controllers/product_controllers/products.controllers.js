@@ -44,15 +44,16 @@ module.exports.postAProduct = async (req, res, next) => {
 module.exports.updateAProduct = async (req, res, next) => {
     try {
         const { id } = req.params;
-        // const query = { _id: id };
+        const data = req.body;
+        const filter = { _id: id };
 
-        const data = await ProductModel.findById(id)
+        const result = await ProductModel.findOneAndUpdate(filter, data);
 
 
         res.status(200).json({
             success: true,
             message: "data get successfully",
-            data: data
+            data: result
         })
 
     } catch (error) {
@@ -69,7 +70,7 @@ module.exports.deleteAProduct = async (req, res, next) => {
         const { id } = req.params;
         const query = { _id: id };
 
-        const result = await ProductModel.deleteOne(query)
+        const result = await ProductModel.findOneAndDelete(query)
 
 
         res.status(200).json({

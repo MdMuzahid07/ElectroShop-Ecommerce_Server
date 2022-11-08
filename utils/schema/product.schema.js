@@ -9,7 +9,8 @@ const productSchema = mongoose.Schema({
         required: [true, "please provide a product name"],
         trim: true,
         unique: [true, "name must be unique"],
-        minLength: [5, "name must be at least 5 character"]
+        minLength: [5, "name must be at least 5 character"],
+        maxLength: [100, "name must be in 100 character"]
     },
     shop: {
         type: Boolean,
@@ -19,7 +20,6 @@ const productSchema = mongoose.Schema({
         type: String,
         required: [true, "please provide a brand name"],
         trim: true,
-        unique: [true, "name must be unique"],
     },
     price: {
         type: Number,
@@ -51,11 +51,15 @@ const productSchema = mongoose.Schema({
     },
     status: {
         type: String,
-        required: [true, "please give a status"]
+        required: [true, "please add a status"]
     },
     categories: {
         type: String,
         required: true,
+    },
+    availableQuantity: {
+        type: Number,
+        required: [true, "please add a available quantity"]
     }
 },
     {

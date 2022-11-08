@@ -1,12 +1,14 @@
-module.exports.getAllProducts = (req, res, next) => {
+const ProductModel = require("../../models/product.model");
+
+module.exports.getAllProducts = async (req, res, next) => {
     try {
-        const data = "get route working?";
+        const result = await ProductModel.find({});
 
 
         res.status(200).json({
             success: true,
             message: "data get successfully",
-            data: data
+            data: result
         })
 
     } catch (error) {
@@ -18,15 +20,16 @@ module.exports.getAllProducts = (req, res, next) => {
     }
 };
 
-module.exports.uploadAProduct = (req, res, next) => {
+module.exports.postAProduct = async (req, res, next) => {
     try {
-        const data = "post route working?";
 
+        const product = new ProductModel(req.body);
+        const result = await product.save();
 
         res.status(200).json({
             success: true,
             message: "data get successfully",
-            data: data
+            data: result
         })
 
     } catch (error) {
